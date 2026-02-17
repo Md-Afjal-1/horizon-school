@@ -123,34 +123,34 @@ const counters = document.querySelectorAll('.counter');
 const speed = 200;
 
 const startCounter = () => {
-    counters.forEach(counter => {
-        const updateCount = () => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
 
-            const increment = target / speed;
+      const increment = target / speed;
 
-            if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(updateCount, 20);
-            } else {
-                counter.innerText = target;
-            }
-        };
-        updateCount();
-    });
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
 };
 
 let counterStarted = false;
 
 window.addEventListener('scroll', () => {
-    const section = document.querySelector('.counter-section');
-    const sectionPos = section.getBoundingClientRect().top;
-    const screenPos = window.innerHeight;
+  const section = document.querySelector('.counter-section');
+  const sectionPos = section.getBoundingClientRect().top;
+  const screenPos = window.innerHeight;
 
-    if (sectionPos < screenPos && !counterStarted) {
-        startCounter();
-        counterStarted = true;
-    }
+  if (sectionPos < screenPos && !counterStarted) {
+    startCounter();
+    counterStarted = true;
+  }
 });
 
